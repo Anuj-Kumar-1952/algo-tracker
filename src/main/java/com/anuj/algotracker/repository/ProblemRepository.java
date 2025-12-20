@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.anuj.algotracker.model.Difficulty;
 import com.anuj.algotracker.model.Problem;
 import com.anuj.algotracker.model.ProblemStatus;
+import com.anuj.algotracker.model.User;
 
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
 
@@ -15,5 +16,7 @@ public interface ProblemRepository extends JpaRepository<Problem, Long> {
     List<Problem> findByStatus(ProblemStatus status);
 
     List<Problem> findByTopic(String topic);
+
+    List<Problem> findByUser(User currentUser);
 
 }

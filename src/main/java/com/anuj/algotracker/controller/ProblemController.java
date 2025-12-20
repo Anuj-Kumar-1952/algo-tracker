@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anuj.algotracker.dto.ProblemRequest;
 import com.anuj.algotracker.dto.ProblemResponse;
 import com.anuj.algotracker.model.Difficulty;
 import com.anuj.algotracker.model.ProblemStatus;
+import com.anuj.algotracker.service.ProblemHistoryService;
+import com.anuj.algotracker.service.ProblemQueueService;
 import com.anuj.algotracker.service.ProblemService;
+import com.anuj.algotracker.service.RecentSolvedService;
 
 import jakarta.validation.Valid;
 
@@ -24,9 +28,19 @@ import jakarta.validation.Valid;
 public class ProblemController {
 
     private final ProblemService problemService;
+    private final ProblemHistoryService problemHistoryService;
+    private final ProblemQueueService problemQueueService;
+    private final RecentSolvedService recentSolvedService;
 
-    public ProblemController(ProblemService problemService) {
+    public ProblemController(ProblemService problemService,
+            ProblemHistoryService problemHistoryService,
+            ProblemQueueService problemQueueService,
+            RecentSolvedService recentSolvedService) {
+
         this.problemService = problemService;
+        this.problemHistoryService = problemHistoryService;
+        this.problemQueueService = problemQueueService;
+        this.recentSolvedService = recentSolvedService;
     }
 
     // Create
@@ -77,4 +91,29 @@ public class ProblemController {
     public List<ProblemResponse> getByTopic(@PathVariable String topic) {
         return problemService.getProblemsByTopic(topic);
     }
+
+    // Get recent problems in reverse order using custom stack
+    // Example: /api/problems/recent/reversed?limit=5
+    @GetMapping("/recent/reversed")
+    public List<ProblemResponse> getRecentProblemsReversed(
+            @RequestParam(defaultValue = "5") int limit) {
+        return problemHistoryService.getRecentProblemsReversed(limit);
+    }
+
+    // Get next problems from a practice queue (using custom MyQueue)
+    // Example: /api/problems/queue/next?limit=5
+    @GetMapping("/queue/next")
+    public List<ProblemResponse> getNextFromQueue(
+            @RequestParam(defaultValue = "5") int limit) {
+        return problemQueueService.getNextProblemsFromQueue(limit);
+    }
+
+    // Get recently solved problems using custom MyLinkedList
+    // Example: /api/problems/solved/recent?limit=5
+    @GetMapping("/solved/recent")
+    public List<ProblemResponse> getRecentlySolved(
+            @RequestParam(defaultValue = "5") int limit) {
+        return recentSolvedService.getRecentlySolvedProblems(limit);
+    }
+
 }
