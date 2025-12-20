@@ -62,6 +62,41 @@ Once the application starts, the server runs on:
 # 🧩 Phase Breakdown
 - Phase 1 – Setup & Basics
 - Phase 2: Authentication & Authorization (JWT)
-- Phase 3: Business Modules 
+# - Phase 3: Business Modules 
+# *Phase 3: Custom Data Structures & Problem Intelligence*
+Overview
+Phase 3 focuses on strengthening the core logic of the application by introducing custom data structure implementations and intelligent problem-handling services.
+This phase enhances how problems are stored, processed, tracked, and recommended to users.
+
+✨ Key Features
+🧩 Custom Data Structures
+Implemented custom versions of commonly used data structures to understand internal workings and improve control over problem processing logic:
+- Custom ArrayList
+- Custom LinkedList
+- Custom Stack
+- Custom Queue
+
+These implementations are used conceptually within the service layer to model real-world problem flows.
+
+$ % Problem Intelligence Services % 
+Introduced multiple services to improve user experience and problem tracking:
+
+ProblemHistoryService
+Tracks user problem-solving history.
+
+ProblemQueueService
+Handles queued problems using queue-based processing.
+
+RecentSolvedService
+Fetches recently solved problems for a user.
+
+RecommendationService
+Suggests problems based on user activity and history.
+
+$ % 🔗 Domain Enhancements % $ 
+
+Linked Problem → User using a ManyToOne relationship for authenticated ownership.
+
+Extended controller and repository layers to support new Phase-3 services.
 - Phase 4: Validation & Documentation 
 - Phase 5: Deployment 
