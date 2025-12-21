@@ -10,19 +10,20 @@ import lombok.Data;
 @Data
 public class ProblemRequest {
 
-    @NotBlank
+    @NotBlank(message = "Title must not be empty")
     private String title;
 
     private String description;
 
-    @NotNull
+    @NotNull(message = "Difficulty is required")
     private Difficulty difficulty;
 
-    @NotBlank
+    @NotBlank(message = "Topic must not be empty")
     private String topic;
 
     private String link;
-
+    
+    @NotNull(message = "Status is required")
     private ProblemStatus status;
 
     public String getTitle() {
