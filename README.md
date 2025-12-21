@@ -57,6 +57,10 @@ Once the application starts, the server runs on:
   http://localhost:8080/
   Use Postman or any REST client to interact with the APIs.
   
+## 📸 API Testing (Postman)
+Below is an example of testing a secured dashboard API using JWT authentication:
+![Dashboard API Postman Screenshot](screenshots/postman-dashboard-api.png)
+
 # 📈 Future Enhancements (Planned)
 
 # 🧩 Phase Breakdown

@@ -1,0 +1,1677 @@
+{
+	"info": {
+		"_postman_id": "e3b3aea6-e5a6-49ca-83ca-c3d5f290fe41",
+		"name": "Algo Tracker Rest API",
+		"description": "# \\# AlgoTracker – REST API Collection Overview\n\n**AlgoTracker** is a secure, scalable REST API designed to help users track, manage, and practice coding problems efficiently. This Postman collection provides a complete set of endpoints to **create, organize, filter, and analyze coding problems**, along with **user authentication and authorization** using JWT.\n\nThe APIs are built using **Spring Boot** and follow **clean architecture principles**, including DTO-based responses, layered service design, and secure access control.\n\n---\n\n### 🔐 Security & Authentication\n\n- JWT-based authentication using **Bearer tokens**\n    \n- Role-based and user-scoped access to problem data\n    \n- Unauthorized access is blocked for all protected endpoints\n    \n\n---\n\n### 🧩 Core Features Covered\n\n- User registration and login\n    \n- CRUD operations for coding problems\n    \n- Filtering problems by **difficulty**, **status**, and **topic**\n    \n- Advanced problem retrieval using **custom data structures**:\n    \n    - Array (Dashboard Summary)\n        \n    - ArrayList (recommend problems)\n        \n    - Stack (recent problems in reverse order)\n        \n    - Queue (practice scheduling)\n        \n    - Linked List (recently solved problems)\n        \n\n---\n\n### 🏗 Architecture Highlights\n\n- DTO-based API responses to avoid direct entity exposure\n    \n- JPA & Hibernate for persistence with lazy loading safety\n    \n- Custom service layer abstractions for business logic\n    \n- Clean separation of concerns between controller, service, and repository layers\n    \n\n---\n\n### 🧪 Testing & Usage\n\n- All secured endpoints require a valid JWT token\n    \n- Token can be configured globally using Postman environment variables\n    \n- Designed for easy integration with frontend applications and testing tools\n    \n\n---\n\n### 🚀 Intended Use\n\nThis collection is intended for:\n\n- Backend API testing and validation\n    \n- Frontend integration\n    \n- Demonstrating REST API design, security, and data-structure–driven features\n    \n\n---\n\n### 📌 Notes\n\n- Base URL: `http://localhost:8080`\n    \n- All endpoints return JSON responses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45447523",
+		"_collection_link": "https://restapi-2285.postman.co/workspace/5d15d861-0c69-464e-8447-3322eb746210/collection/45447523-e3b3aea6-e5a6-49ca-83ca-c3d5f290fe41?action=share&source=collection_link&creator=45447523"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Abhay\",\r\n  \"email\": \"abhay@example.com\",\r\n  \"password\": \"abhay@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}}/api/auth/register",
+					"host": [
+						"{{baseURL}}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register 1st user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Anuj\",\r\n  \"email\": \"anuj@example.com\",\r\n  \"password\": \"anuj@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 07:44:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "User registered successfully"
+				},
+				{
+					"name": "Register 2nd user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Abhay\",\r\n  \"email\": \"abhay@example.com\",\r\n  \"password\": \"abhay@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 08:45:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "User registered successfully"
+				}
+			]
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"abhay@example.com\",\r\n  \"password\": \"abhay@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create jwt token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"anuj@example.com\",\r\n  \"password\": \"anuj@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 07:50:57 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnVqQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY1MzUzMDU3LCJleHAiOjE3NjU0Mzk0NTd9.MYJ7PSMsKXBet1-gpWzVhqbJV6JFXD_4xJUxODc9b6wvqYRZNFKAObs0FXEew042q-NuUm2d1qbI1IEXF1MdSQ\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Current logged-in User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/users/me",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get currently logged-in user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:33:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"name\": \"Abhay\",\n    \"email\": \"abhay@example.com\",\n    \"password\": \"$2a$10$tEBaXDOBTh2mrhsl6.KWVeaumxky7godqOSIsH48t1RwT2T9qeis6\",\n    \"role\": \"USER\",\n    \"createdAt\": \"2025-12-10T14:15:10.13914\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Retrieve all problems",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/problems/status/DONE",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"status",
+						"DONE"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "retrieve all problems",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/status/DONE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"status",
+								"DONE"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:28:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Trapping Rain Water \",\n        \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"TWO_POINTER\",\n        \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Retrieve problem by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/problems/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"problems",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get problem by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:37:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"title\": \"Trapping Rain Water \",\n    \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n    \"difficulty\": \"HARD\",\n    \"topic\": \"TWO_POINTER\",\n    \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n    \"status\": \"DONE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a problem",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTM1ODIyOCwiZXhwIjoxNzY1NDQ0NjI4fQ.JbCSat6OWjtE41iC8tR0Fm6LyDZbCDe42OqAl38C6OpELOg0ySRISjPTif6TrLw2qNn0nK3RBXFoUU51TJFf2Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Trapping Rain Water\",\r\n  \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\r\n  \"difficulty\": \"HARD\",\r\n  \"topic\": \"TWO_POINTERS\",\r\n  \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\r\n  \"status\": \"TODO\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/problems",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create problem after login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTM1ODIyOCwiZXhwIjoxNzY1NDQ0NjI4fQ.JbCSat6OWjtE41iC8tR0Fm6LyDZbCDe42OqAl38C6OpELOg0ySRISjPTif6TrLw2qNn0nK3RBXFoUU51TJFf2Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Trapping Rain Water\",\r\n  \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\r\n  \"difficulty\": \"HARD\",\r\n  \"topic\": \"TWO_POINTERS\",\r\n  \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\r\n  \"status\": \"TODO\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/problems",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"problems"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 09:24:17 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 12,\n    \"title\": \"Trapping Rain Water\",\n    \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n    \"difficulty\": \"HARD\",\n    \"topic\": \"TWO_POINTERS\",\n    \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n    \"status\": \"TODO\",\n    \"createdAt\": \"2025-12-10T14:54:17.802704\",\n    \"updatedAt\": \"2025-12-10T14:54:17.802704\",\n    \"user\": {\n        \"id\": 2,\n        \"name\": \"Abhay\",\n        \"email\": \"abhay@example.com\",\n        \"password\": \"$2a$10$tEBaXDOBTh2mrhsl6.KWVeaumxky7godqOSIsH48t1RwT2T9qeis6\",\n        \"role\": \"USER\",\n        \"createdAt\": \"2025-12-10T14:15:10.13914\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update a problem",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/problems/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update an existing problem",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/problems/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 06:55:11 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"title\": \"Two Sum (Updated 1)\",\n    \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\n    \"difficulty\": \"EASY\",\n    \"topic\": \"ARRAY\",\n    \"link\": \"https://leetcode.com/problems/two-sum\",\n    \"status\": \"IN_PROGRESS\",\n    \"createdAt\": \"2025-12-10T12:07:47.985447\",\n    \"updatedAt\": \"2025-12-10T12:25:11.4637767\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete problem",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/problems/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete by id",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/problems/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Dec 2025 06:58:38 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Recommend problems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTU0Mzc2MiwiZXhwIjoxNzY1NjMwMTYyfQ.CnwMPNCexALLvz2ockuei66BZNA6joJytpPs1vW2WeoE5P6JZwDt48OXNGFa267r2nMKEOXuEkmlptqg9TNVbg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/recommendations/next?topic=ARRAY&difficulty=EASY&limit=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recommendations",
+						"next"
+					],
+					"query": [
+						{
+							"key": "topic",
+							"value": "ARRAY"
+						},
+						{
+							"key": "difficulty",
+							"value": "EASY"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "based on topic, difficulty & limit",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTU0Mzc2MiwiZXhwIjoxNzY1NjMwMTYyfQ.CnwMPNCexALLvz2ockuei66BZNA6joJytpPs1vW2WeoE5P6JZwDt48OXNGFa267r2nMKEOXuEkmlptqg9TNVbg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/recommendations/next?topic=ARRAY&difficulty=EASY&limit=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recommendations",
+								"next"
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "ARRAY"
+								},
+								{
+									"key": "difficulty",
+									"value": "EASY"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Dec 2025 13:02:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Two Sum\",\n        \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Maximum Subarray\",\n        \"description\": \"Find the contiguous subarray which has the largest sum and return its sum.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-subarray\",\n        \"status\": \"TODO\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get recent problems in order",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/problems/recent/reversed?limit=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"recent",
+						"reversed"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "reverse order",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTU0NTcxMCwiZXhwIjoxNzY1NjMyMTEwfQ.ep1UcZ1F-15JsDea0MVgs-D-bHK6fuRMzUEv9oMkEOf3E4L1qoQNNx-qF_ff7WeVGyZaA099WfQJcVju0oFMvA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/recent/reversed?limit=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"recent",
+								"reversed"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Dec 2025 13:25:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Group Anagrams\",\n        \"description\": \"Given an array of strings, group the anagrams together.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"HASHMAP\",\n        \"link\": \"https://leetcode.com/problems/group-anagrams\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Merge k Sorted Lists\",\n        \"description\": \"Merge k sorted linked lists and return it as one sorted list.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"HEAP\",\n        \"link\": \"https://leetcode.com/problems/merge-k-sorted-lists\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Trapping Rain Water\",\n        \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"TWO_POINTERS\",\n        \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n        \"status\": \"TODO\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get next problems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTU0NTcxMCwiZXhwIjoxNzY1NjMyMTEwfQ.ep1UcZ1F-15JsDea0MVgs-D-bHK6fuRMzUEv9oMkEOf3E4L1qoQNNx-qF_ff7WeVGyZaA099WfQJcVju0oFMvA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/problems/queue/next?limit=2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"queue",
+						"next"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "from practice queue",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmhheUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NTU0NTcxMCwiZXhwIjoxNzY1NjMyMTEwfQ.ep1UcZ1F-15JsDea0MVgs-D-bHK6fuRMzUEv9oMkEOf3E4L1qoQNNx-qF_ff7WeVGyZaA099WfQJcVju0oFMvA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/queue/next?limit=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"queue",
+								"next"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 12 Dec 2025 13:46:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Two Sum\",\n        \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Valid Parentheses\",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STACK\",\n        \"link\": \"https://leetcode.com/problems/valid-parentheses\",\n        \"status\": \"TODO\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Filter problems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/problems/status/DONE",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"problems",
+						"status",
+						"DONE"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "filter by difficulty",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/topic/array",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"topic",
+								"array"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:46:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Valid Parentheses\",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STACK\",\n        \"link\": \"https://leetcode.com/problems/valid-parentheses\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Merge Two Sorted Lists\",\n        \"description\": \"Merge two sorted linked lists and return it as a sorted list.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"LINKED_LIST\",\n        \"link\": \"https://leetcode.com/problems/merge-two-sorted-lists\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Maximum Subarray\",\n        \"description\": \"Find the contiguous subarray which has the largest sum and return its sum.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-subarray\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"title\": \"Reverse a String\",\n        \"description\": \"Write a function that reverses a given string.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STRING\",\n        \"link\": \"https://leetcode.com/problems/reverse-string\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Palindrome Number\",\n        \"description\": \"Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"MATH\",\n        \"link\": \"https://leetcode.com/problems/palindrome-number\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Find Maximum and Minimum Element in Array\",\n        \"description\": \"Find the maximum and minimum elements in an integer array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-product-of-three-numbers\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Check if Array is Sorted and Rotated\",\n        \"description\": \"Determine whether an array is sorted and possibly rotated.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/check-if-array-is-sorted-and-rotated\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Remove Duplicates from Sorted Array\",\n        \"description\": \"Given a sorted array, remove the duplicates in-place and return the length of the unique elements.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/remove-duplicates-from-sorted-array\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Merge Sorted Array\",\n        \"description\": \"You are given two integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/merge-sorted-array\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Move Zeroes\",\n        \"description\": \"Move all 0's to the end of an array while maintaining the relative order of the non-zero elements.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/move-zeroes\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Valid Palindrome\",\n        \"description\": \"Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STRING\",\n        \"link\": \"https://leetcode.com/problems/valid-palindrome\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Implement Queue using Stacks\",\n        \"description\": \"Implement a first in first out (FIFO) queue using only two stacks.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STACK\",\n        \"link\": \"https://leetcode.com/problems/implement-queue-using-stacks\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Maximum Depth of Binary Tree\",\n        \"description\": \"Given the root of a binary tree, return its maximum depth.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"TREE\",\n        \"link\": \"https://leetcode.com/problems/maximum-depth-of-binary-tree\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Find the Largest Element in an Array\",\n        \"description\": \"Given an array of integers, find and return the largest element present in the array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-product-of-three-numbers\",\n        \"status\": \"TODO\"\n    }\n]"
+				},
+				{
+					"name": "filter by topic",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/topic/ARRAY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"topic",
+								"ARRAY"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:49:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Maximum Subarray\",\n        \"description\": \"Find the contiguous subarray which has the largest sum and return its sum.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-subarray\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"title\": \"3Sum\",\n        \"description\": \"Find all unique triplets in the array which gives the sum of zero.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/3sum\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"title\": \"Find Maximum and Minimum Element in Array\",\n        \"description\": \"Find the maximum and minimum elements in an integer array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-product-of-three-numbers\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Check if Array is Sorted and Rotated\",\n        \"description\": \"Determine whether an array is sorted and possibly rotated.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/check-if-array-is-sorted-and-rotated\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Remove Duplicates from Sorted Array\",\n        \"description\": \"Given a sorted array, remove the duplicates in-place and return the length of the unique elements.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/remove-duplicates-from-sorted-array\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Merge Sorted Array\",\n        \"description\": \"You are given two integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/merge-sorted-array\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Move Zeroes\",\n        \"description\": \"Move all 0's to the end of an array while maintaining the relative order of the non-zero elements.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/move-zeroes\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"title\": \"Find the Largest Element in an Array\",\n        \"description\": \"Given an array of integers, find and return the largest element present in the array.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-product-of-three-numbers\",\n        \"status\": \"TODO\"\n    }\n]"
+				},
+				{
+					"name": "filter by status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/problems/status/DONE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"problems",
+								"status",
+								"DONE"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Dec 2025 09:49:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"title\": \"Trapping Rain Water \",\n        \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"TWO_POINTER\",\n        \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Dashboard Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/dashboard/summary",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"dashboard",
+						"summary"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get summary of problems for authenticated user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/dashboard/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"dashboard",
+								"summary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Dec 2025 06:47:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"totalProblems\": 10,\n    \"easyCount\": 4,\n    \"mediumCount\": 4,\n    \"hardCount\": 2,\n    \"todoCount\": 5,\n    \"inProgressCount\": 3,\n    \"doneCount\": 2\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		},
+		{
+			"key": "Authorization",
+			"value": ""
+		}
+	]
+}
