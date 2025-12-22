@@ -33,9 +33,14 @@ algotracker
 │
 ├── src/main/java/com/anuj/algotracker
 │   ├── controller        # REST controllers
-│   ├── service           # Business logic
 │   ├── datastructure     # Custom data structure implementations
-│   └── AlgotrackerApplication.java
+│   ├── dto               # data transfer objects
+│   ├── exception         # Global and custom exception handling 
+│   ├── model             # Entity - contains JPA entity classes representing DB tables  
+│   ├── repository        # Data access layer - contains JPA repository responsible for db operation
+│   ├── security          # Application security configuration
+│   ├── service           # Business logic
+│   └── AlgotrackerApplication.java   # Application entry point
 │
 ├── src/main/resources
 │
@@ -52,16 +57,63 @@ algotracker
 3. Run the Application 
    ./mvnw spring-boot:run
 
-🌐 API Usage
+## ▶️ Quick Demo Flow
+
+1. Register a user – `/api/auth/register`
+2. Login – `/api/auth/login` → get JWT
+3. Authorize in Swagger using JWT
+4. Create problems – `/api/problems`
+5. Explore:
+   - Recommendations
+   - Practice queue
+   - Recently solved problems
+   - Dashboard summary
+
+# 🌐 API Usage
 Once the application starts, the server runs on:
   http://localhost:8080/
   Use Postman or any REST client to interact with the APIs.
-  
-# 📈 Future Enhancements (Planned)
 
-# 🧩 Phase Breakdown
-- Phase 1 – Setup & Basics
-- Phase 2: Authentication & Authorization (JWT)
-- Phase 3: Business Modules 
-- Phase 4: Validation & Documentation 
-- Phase 5: Deployment 
+# API Documentation (Swagger / OpenAPI)
+
+This project uses **Swagger (springdoc-openapi)** to provide interactive API documentation.
+
+### 🔗 Swagger UI
+Once the application is running, access Swagger at:
+
+http://localhost:8080/swagger-ui/index.html
+
+**$ % 🔐 JWT Authentication in Swagger % $**
+1. Call **POST /api/auth/login**
+2. Copy the JWT token from the response
+3. Click the 🔒 **Authorize** button in Swagger
+4. Paste token as: Bearer <your_token>
+5. Now you can access all secured APIs directly from Swagger UI
+  
+
+# **$ Project Progress $**
+### ✅ Phase 1 – Core Setup
+- Spring Boot project setup
+- MySQL integration
+- Problem CRUD APIs
+
+### ✅ Phase 2 – Security
+- User registration & login
+- JWT-based authentication
+- Spring Security configuration
+
+### ✅ Phase 3 – Multi-user Support
+- User-specific data isolation
+- Secure access to problems
+
+### ✅ Phase 4 – Custom Data Structures
+- Custom MyArrayList for recommendations
+- Custom Stack for reversed history
+- Custom Circular Queue for practice flow
+- Custom LinkedList for recently solved problems
+
+### ✅ Phase 5 – Advanced & Polish
+- Dashboard summary API
+- Input validation using Jakarta Validation
+- Global exception handling
+- Swagger / OpenAPI documentation with JWT support
