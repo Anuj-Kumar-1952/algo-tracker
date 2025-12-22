@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anuj.algotracker.model.User;
 import com.anuj.algotracker.service.CurrentUserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/users")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
 
     private final CurrentUserService currentUserService;

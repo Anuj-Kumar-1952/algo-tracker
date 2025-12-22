@@ -33,9 +33,14 @@ algotracker
 │
 ├── src/main/java/com/anuj/algotracker
 │   ├── controller        # REST controllers
-│   ├── service           # Business logic
 │   ├── datastructure     # Custom data structure implementations
-│   └── AlgotrackerApplication.java
+│   ├── dto               # data transfer objects
+│   ├── exception         # Global and custom exception handling 
+│   ├── model             # Entity - contains JPA entity classes representing DB tables  
+│   ├── repository        # Data access layer - contains JPA repository responsible for db operation
+│   ├── security          # Application security configuration
+│   ├── service           # Business logic
+│   └── AlgotrackerApplication.java   # Application entry point
 │
 ├── src/main/resources
 │
@@ -52,7 +57,19 @@ algotracker
 3. Run the Application 
    ./mvnw spring-boot:run
 
-🌐 API Usage
+## ▶️ Quick Demo Flow
+
+1. Register a user – `/api/auth/register`
+2. Login – `/api/auth/login` → get JWT
+3. Authorize in Swagger using JWT
+4. Create problems – `/api/problems`
+5. Explore:
+   - Recommendations
+   - Practice queue
+   - Recently solved problems
+   - Dashboard summary
+
+# 🌐 API Usage
 Once the application starts, the server runs on:
   http://localhost:8080/
   Use Postman or any REST client to interact with the APIs.
@@ -61,46 +78,45 @@ Once the application starts, the server runs on:
 Below is an example of testing a secured dashboard API using JWT authentication:
 ![Dashboard API Postman Screenshot](screenshots/postman-dashboard-api.png)
 
-# 📈 Future Enhancements (Planned)
+# API Documentation (Swagger / OpenAPI)
 
-# 🧩 Phase Breakdown
-- Phase 1 – Setup & Basics
-- Phase 2: Authentication & Authorization (JWT)
-# - Phase 3: Business Modules 
-# *Phase 3: Custom Data Structures & Problem Intelligence*
-Overview
-Phase 3 focuses on strengthening the core logic of the application by introducing custom data structure implementations and intelligent problem-handling services.
-This phase enhances how problems are stored, processed, tracked, and recommended to users.
+This project uses **Swagger (springdoc-openapi)** to provide interactive API documentation.
 
-✨ Key Features
-🧩 Custom Data Structures
-Implemented custom versions of commonly used data structures to understand internal workings and improve control over problem processing logic:
-- Custom ArrayList
-- Custom LinkedList
-- Custom Stack
-- Custom Queue
+### 🔗 Swagger UI
+Once the application is running, access Swagger at:
 
-These implementations are used conceptually within the service layer to model real-world problem flows.
+http://localhost:8080/swagger-ui/index.html
 
-$ % Problem Intelligence Services % 
-Introduced multiple services to improve user experience and problem tracking:
+**$ % 🔐 JWT Authentication in Swagger % $**
+1. Call **POST /api/auth/login**
+2. Copy the JWT token from the response
+3. Click the 🔒 **Authorize** button in Swagger
+4. Paste token as: Bearer <your_token>
+5. Now you can access all secured APIs directly from Swagger UI
+  
+# **$ Project Progress $**
+### ✅ Phase 1 – Core Setup
+- Spring Boot project setup
+- MySQL integration
+- Problem CRUD APIs
 
-ProblemHistoryService
-Tracks user problem-solving history.
+### ✅ Phase 2 – Security
+- User registration & login
+- JWT-based authentication
+- Spring Security configuration
 
-ProblemQueueService
-Handles queued problems using queue-based processing.
+### ✅ Phase 3 – Multi-user Support
+- User-specific data isolation
+- Secure access to problems
 
-RecentSolvedService
-Fetches recently solved problems for a user.
+### ✅ Phase 4 – Custom Data Structures
+- Custom MyArrayList for recommendations
+- Custom Stack for reversed history
+- Custom Circular Queue for practice flow
+- Custom LinkedList for recently solved problems
 
-RecommendationService
-Suggests problems based on user activity and history.
-
-$ % 🔗 Domain Enhancements % $ 
-
-Linked Problem → User using a ManyToOne relationship for authenticated ownership.
-
-Extended controller and repository layers to support new Phase-3 services.
-- Phase 4: Validation & Documentation 
-- Phase 5: Deployment 
+### ✅ Phase 5 – Advanced & Polish
+- Dashboard summary API
+- Input validation using Jakarta Validation
+- Global exception handling
+- Swagger / OpenAPI documentation with JWT support

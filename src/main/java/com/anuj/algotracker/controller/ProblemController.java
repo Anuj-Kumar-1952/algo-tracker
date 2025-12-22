@@ -21,10 +21,12 @@ import com.anuj.algotracker.service.ProblemQueueService;
 import com.anuj.algotracker.service.ProblemService;
 import com.anuj.algotracker.service.RecentSolvedService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/problems")
+@SecurityRequirement(name = "bearerAuth")
 public class ProblemController {
 
     private final ProblemService problemService;
