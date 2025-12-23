@@ -1,6 +1,5 @@
 package com.anuj.algotracker.datastructure;
 /**
- * Simple singly linked list implementation.
  * the idea for using this linked list:
  * "Store a list of recently solved problems by the user in a linked list
  * to efficiently add/remove problems as they are solved."
