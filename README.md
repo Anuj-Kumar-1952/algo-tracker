@@ -87,6 +87,12 @@ Once the application is running, access Swagger at:
 
 http://localhost:8080/swagger-ui/index.html
 
+### Swagger UI Screenshots
+Below are screenshots of the Swagger UI for this project:
+![Swagger Home](screenshots/swagger-home.png)
+![Problems API](screenshots/swagger-problems.png)
+![APIs](screenshots/swagger-api.png)
+
 **$ % 🔐 JWT Authentication in Swagger % $**
 1. Call **POST /api/auth/login**
 2. Copy the JWT token from the response

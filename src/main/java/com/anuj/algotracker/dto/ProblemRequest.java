@@ -26,12 +26,4 @@ public class ProblemRequest {
     @NotNull(message = "Status is required")
     private ProblemStatus status;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
 }

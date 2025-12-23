@@ -51,6 +51,12 @@ public class ProblemController {
         return problemService.createProblem(request);
     }
 
+    @PostMapping("/bulk")
+    public List<ProblemResponse> createProblemBulk(
+            @Valid @RequestBody List<ProblemRequest> requests) {
+        return problemService.createProblemBulk(requests);
+    }
+
     // Read all
     @GetMapping
     public List<ProblemResponse> getAllProblems() {
@@ -74,6 +80,13 @@ public class ProblemController {
     @DeleteMapping("/{id}")
     public void deleteProblem(@PathVariable Long id) {
         problemService.deleteProblem(id);
+    }
+    
+    // Delete all problems of current user
+    @DeleteMapping
+    public String deleteMyProblems() {
+        long deleted = problemService.deleteAllProblemsOfCurrentUser();
+        return deleted + " problems deleted successfully";
     }
 
     // Filter by difficulty

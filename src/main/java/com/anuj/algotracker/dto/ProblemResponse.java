@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class ProblemResponse {
+    private Long id;
     @NotBlank
     private String title;
 

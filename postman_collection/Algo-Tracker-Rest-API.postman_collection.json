@@ -5,7 +5,11 @@
 		"description": "# \\# AlgoTracker – REST API Collection Overview\n\n**AlgoTracker** is a secure, scalable REST API designed to help users track, manage, and practice coding problems efficiently. This Postman collection provides a complete set of endpoints to **create, organize, filter, and analyze coding problems**, along with **user authentication and authorization** using JWT.\n\nThe APIs are built using **Spring Boot** and follow **clean architecture principles**, including DTO-based responses, layered service design, and secure access control.\n\n---\n\n### 🔐 Security & Authentication\n\n- JWT-based authentication using **Bearer tokens**\n    \n- Role-based and user-scoped access to problem data\n    \n- Unauthorized access is blocked for all protected endpoints\n    \n\n---\n\n### 🧩 Core Features Covered\n\n- User registration and login\n    \n- CRUD operations for coding problems\n    \n- Filtering problems by **difficulty**, **status**, and **topic**\n    \n- Advanced problem retrieval using **custom data structures**:\n    \n    - Array (Dashboard Summary)\n        \n    - ArrayList (recommend problems)\n        \n    - Stack (recent problems in reverse order)\n        \n    - Queue (practice scheduling)\n        \n    - Linked List (recently solved problems)\n        \n\n---\n\n### 🏗 Architecture Highlights\n\n- DTO-based API responses to avoid direct entity exposure\n    \n- JPA & Hibernate for persistence with lazy loading safety\n    \n- Custom service layer abstractions for business logic\n    \n- Clean separation of concerns between controller, service, and repository layers\n    \n\n---\n\n### 🧪 Testing & Usage\n\n- All secured endpoints require a valid JWT token\n    \n- Token can be configured globally using Postman environment variables\n    \n- Designed for easy integration with frontend applications and testing tools\n    \n\n---\n\n### 🚀 Intended Use\n\nThis collection is intended for:\n\n- Backend API testing and validation\n    \n- Frontend integration\n    \n- Demonstrating REST API design, security, and data-structure–driven features\n    \n\n---\n\n### 📌 Notes\n\n- Base URL: `http://localhost:8080`\n    \n- All endpoints return JSON responses",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "45447523",
+<<<<<<< HEAD
 		"_collection_link": "https://restapi-2285.postman.co/workspace/5d15d861-0c69-464e-8447-3322eb746210/collection/45447523-e3b3aea6-e5a6-49ca-83ca-c3d5f290fe41?action=share&source=collection_link&creator=45447523"
+=======
+		"_collection_link": "https://restapi-2285.postman.co/workspace/Rest_API-Workspace~5d15d861-0c69-464e-8447-3322eb746210/collection/45447523-e3b3aea6-e5a6-49ca-83ca-c3d5f290fe41?action=share&source=collection_link&creator=45447523"
+>>>>>>> develop
 	},
 	"item": [
 		{
@@ -430,21 +434,33 @@
 					}
 				],
 				"url": {
+<<<<<<< HEAD
 					"raw": "{{baseURL}}/api/problems/status/DONE",
+=======
+					"raw": "{{baseURL}}/api/problems",
+>>>>>>> develop
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"api",
+<<<<<<< HEAD
 						"problems",
 						"status",
 						"DONE"
+=======
+						"problems"
+>>>>>>> develop
 					]
 				}
 			},
 			"response": [
 				{
+<<<<<<< HEAD
 					"name": "retrieve all problems",
+=======
+					"name": "Retrieve all problems for current user",
+>>>>>>> develop
 					"originalRequest": {
 						"method": "GET",
 						"header": [
@@ -455,6 +471,7 @@
 							}
 						],
 						"url": {
+<<<<<<< HEAD
 							"raw": "http://localhost:8080/api/problems/status/DONE",
 							"protocol": "http",
 							"host": [
@@ -466,6 +483,15 @@
 								"problems",
 								"status",
 								"DONE"
+=======
+							"raw": "{{baseURL}}/api/problems",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"problems"
+>>>>>>> develop
 							]
 						}
 					},
@@ -474,6 +500,21 @@
 					"_postman_previewlanguage": null,
 					"header": [
 						{
+<<<<<<< HEAD
+=======
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+>>>>>>> develop
 							"key": "X-Content-Type-Options",
 							"value": "nosniff"
 						},
@@ -507,7 +548,11 @@
 						},
 						{
 							"key": "Date",
+<<<<<<< HEAD
 							"value": "Sat, 20 Dec 2025 09:28:49 GMT"
+=======
+							"value": "Tue, 23 Dec 2025 07:36:44 GMT"
+>>>>>>> develop
 						},
 						{
 							"key": "Keep-Alive",
@@ -519,7 +564,11 @@
 						}
 					],
 					"cookie": [],
+<<<<<<< HEAD
 					"body": "[\n    {\n        \"title\": \"Trapping Rain Water \",\n        \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"TWO_POINTER\",\n        \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    }\n]"
+=======
+					"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Trapping Rain Water \",\n        \"description\": \"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"TWO_POINTER\",\n        \"link\": \"https://leetcode.com/problems/trapping-rain-water\",\n        \"status\": \"DONE\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Valid Parentheses\",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"STACK\",\n        \"link\": \"https://leetcode.com/problems/valid-parentheses\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Merge Two Sorted Lists\",\n        \"description\": \"Merge two sorted linked lists and return it as a sorted list.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"LINKED_LIST\",\n        \"link\": \"https://leetcode.com/problems/merge-two-sorted-lists\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Maximum Subarray\",\n        \"description\": \"Find the contiguous subarray which has the largest sum and return its sum.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/maximum-subarray\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Add Two Numbers\",\n        \"description\": \"You are given two non-empty linked lists representing two non-negative integers. Add the two numbers and return the sum as a linked list.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"LINKED_LIST\",\n        \"link\": \"https://leetcode.com/problems/add-two-numbers\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Longest Substring Without Repeating Characters\",\n        \"description\": \"Given a string s, find the length of the longest substring without repeating characters.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"STRING\",\n        \"link\": \"https://leetcode.com/problems/longest-substring-without-repeating-characters\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"id\": 9,\n        \"title\": \"3Sum\",\n        \"description\": \"Find all unique triplets in the array which gives the sum of zero.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/3sum\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Group Anagrams\",\n        \"description\": \"Given an array of strings, group the anagrams together.\",\n        \"difficulty\": \"MEDIUM\",\n        \"topic\": \"HASHMAP\",\n        \"link\": \"https://leetcode.com/problems/group-anagrams\",\n        \"status\": \"TODO\"\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Merge k Sorted Lists\",\n        \"description\": \"Merge k sorted linked lists and return it as one sorted list.\",\n        \"difficulty\": \"HARD\",\n        \"topic\": \"HEAP\",\n        \"link\": \"https://leetcode.com/problems/merge-k-sorted-lists\",\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"id\": 12,\n        \"title\": \"Valid Parenthesis \",\n        \"description\": \"Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\",\n        \"difficulty\": \"EASY\",\n        \"topic\": \"ARRAY\",\n        \"link\": \"https://leetcode.com/problems/two-sum\",\n        \"status\": \"DONE\"\n    }\n]"
+>>>>>>> develop
 				}
 			]
 		},
@@ -755,10 +804,23 @@
 					"type": "noauth"
 				},
 				"method": "PUT",
+<<<<<<< HEAD
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n",
+=======
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"title\": \"3Sum\",\r\n        \"description\": \"Find all unique triplets in the array which gives the sum of zero.\",\r\n        \"difficulty\": \"MEDIUM\",\r\n        \"topic\": \"ARRAY\",\r\n        \"link\": \"https://leetcode.com/problems/3sum\",\r\n        \"status\": \"TODO\"\r\n}\r\n",
+>>>>>>> develop
 					"options": {
 						"raw": {
 							"language": "json"
@@ -766,19 +828,28 @@
 					}
 				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "{{baseURL}}/api/problems/1",
+=======
+					"raw": "{{baseURL}}/api/problems/9",
+>>>>>>> develop
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"api",
 						"problems",
+<<<<<<< HEAD
 						"1"
+=======
+						"9"
+>>>>>>> develop
 					]
 				}
 			},
 			"response": [
 				{
+<<<<<<< HEAD
 					"name": "update an existing problem",
 					"originalRequest": {
 						"method": "PUT",
@@ -786,6 +857,21 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"title\": \"Two Sum (Updated 1)\",\r\n   \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\r\n \"difficulty\": \"EASY\",\r\n  \"topic\": \"ARRAY\",\r\n  \"link\": \"https://leetcode.com/problems/two-sum\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}\r\n",
+=======
+					"name": "Update an existing problem",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"3Sum\",\r\n        \"description\": \"Find all unique triplets in the array which gives the sum of zero.\",\r\n        \"difficulty\": \"MEDIUM\",\r\n        \"topic\": \"ARRAY\",\r\n        \"link\": \"https://leetcode.com/problems/3sum\",\r\n        \"status\": \"TODO\"\r\n}\r\n",
+>>>>>>> develop
 							"options": {
 								"raw": {
 									"language": "json"
@@ -793,6 +879,7 @@
 							}
 						},
 						"url": {
+<<<<<<< HEAD
 							"raw": "http://localhost:8080/api/problems/1",
 							"protocol": "http",
 							"host": [
@@ -803,6 +890,16 @@
 								"api",
 								"problems",
 								"1"
+=======
+							"raw": "{{baseURL}}/api/problems/9",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								"9"
+>>>>>>> develop
 							]
 						}
 					},
@@ -811,6 +908,45 @@
 					"_postman_previewlanguage": null,
 					"header": [
 						{
+<<<<<<< HEAD
+=======
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+>>>>>>> develop
 							"key": "Content-Type",
 							"value": "application/json"
 						},
@@ -820,7 +956,11 @@
 						},
 						{
 							"key": "Date",
+<<<<<<< HEAD
 							"value": "Wed, 10 Dec 2025 06:55:11 GMT"
+=======
+							"value": "Tue, 23 Dec 2025 07:39:00 GMT"
+>>>>>>> develop
 						},
 						{
 							"key": "Keep-Alive",
@@ -832,7 +972,11 @@
 						}
 					],
 					"cookie": [],
+<<<<<<< HEAD
 					"body": "{\n    \"id\": 1,\n    \"title\": \"Two Sum (Updated 1)\",\n    \"description\": \"Given an array of integers, return indices of the two numbers such that they add up to a specific target.\",\n    \"difficulty\": \"EASY\",\n    \"topic\": \"ARRAY\",\n    \"link\": \"https://leetcode.com/problems/two-sum\",\n    \"status\": \"IN_PROGRESS\",\n    \"createdAt\": \"2025-12-10T12:07:47.985447\",\n    \"updatedAt\": \"2025-12-10T12:25:11.4637767\"\n}"
+=======
+					"body": "{\n    \"id\": 9,\n    \"title\": \"3Sum\",\n    \"description\": \"Find all unique triplets in the array which gives the sum of zero.\",\n    \"difficulty\": \"MEDIUM\",\n    \"topic\": \"ARRAY\",\n    \"link\": \"https://leetcode.com/problems/3sum\",\n    \"status\": \"TODO\"\n}"
+>>>>>>> develop
 				}
 			]
 		},

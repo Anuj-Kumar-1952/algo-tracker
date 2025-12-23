@@ -11,12 +11,16 @@ import com.anuj.algotracker.model.User;
 
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
 
-    List<Problem> findByDifficulty(Difficulty difficulty);
+    List<Problem> findByUser(User user);
 
-    List<Problem> findByStatus(ProblemStatus status);
+    List<Problem> findByUserAndDifficulty(User user, Difficulty difficulty);
 
-    List<Problem> findByTopic(String topic);
+    List<Problem> findByUserAndStatus(User user, ProblemStatus status);
 
-    List<Problem> findByUser(User currentUser);
+    List<Problem> findByUserAndTopic(User user, String topic);
+
+    long countByUser(User user); // For counting problems of a user
+
+    void deleteByUser(User user);
 
 }
