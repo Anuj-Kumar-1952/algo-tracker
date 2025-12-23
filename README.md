@@ -73,6 +73,10 @@ algotracker
 Once the application starts, the server runs on:
   http://localhost:8080/
   Use Postman or any REST client to interact with the APIs.
+  
+## 📸 API Testing (Postman)
+Below is an example of testing a secured dashboard API using JWT authentication:
+![Dashboard API Postman Screenshot](screenshots/postman-dashboard-api.png)
 
 # API Documentation (Swagger / OpenAPI)
 
@@ -83,6 +87,12 @@ Once the application is running, access Swagger at:
 
 http://localhost:8080/swagger-ui/index.html
 
+### Swagger UI Screenshots
+Below are screenshots of the Swagger UI for this project:
+![Swagger Home](screenshots/swagger-home.png)
+![Problems API](screenshots/swagger-problems.png)
+![APIs](screenshots/swagger-api.png)
+
 **$ % 🔐 JWT Authentication in Swagger % $**
 1. Call **POST /api/auth/login**
 2. Copy the JWT token from the response
@@ -90,7 +100,6 @@ http://localhost:8080/swagger-ui/index.html
 4. Paste token as: Bearer <your_token>
 5. Now you can access all secured APIs directly from Swagger UI
   
-
 # **$ Project Progress $**
 ### ✅ Phase 1 – Core Setup
 - Spring Boot project setup
