@@ -51,7 +51,5 @@ Thumbs.db
 application.properties
 application.yml
 
-src/main/resources/application-docker.properties
-/docker-compose.yml
-/Dockerfile
 /.env
+/volumes/

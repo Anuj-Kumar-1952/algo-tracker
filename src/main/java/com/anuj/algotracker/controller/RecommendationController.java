@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anuj.algotracker.dto.ProblemResponse;
 import com.anuj.algotracker.model.Difficulty;
-import com.anuj.algotracker.model.Problem;
 import com.anuj.algotracker.service.RecommendationService;
 
 @RestController
