@@ -177,4 +177,40 @@ class ProblemServiceTest {
                 verify(modelMapper).map(problem, ProblemResponse.class);
         }
 
+        @Test
+        void deleteProblemSuccessfully() {
+
+                // Arrange
+                ProblemRepository problemRepository = mock(ProblemRepository.class);
+                ModelMapper modelMapper = mock(ModelMapper.class);
+                CurrentUserService currentUserService = mock(CurrentUserService.class);
+
+                ProblemService problemService = new ProblemService(
+                                problemRepository,
+                                modelMapper,
+                                currentUserService);
+
+                User user = new User();
+                user.setId(1L);
+                user.setEmail("anuj@gmail.com");
+
+                Problem problem = new Problem();
+                problem.setId(10L);
+                problem.setTitle("Two Sum");
+                problem.setUser(user);
+
+                when(currentUserService.getCurrentUser())
+                                .thenReturn(user);
+
+                when(problemRepository.findById(10L))
+                                .thenReturn(java.util.Optional.of(problem));
+
+                // Act
+                problemService.deleteProblem(10L);
+
+                // Assert
+                verify(problemRepository).delete(problem);
+        }
+        
+
 }
