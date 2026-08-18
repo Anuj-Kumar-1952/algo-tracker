@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
@@ -290,6 +291,40 @@ class ProblemServiceTest {
 
                 // Database update should never happen
                 verify(problemRepository, never()).save(any(Problem.class));
+        }
+
+        @Test
+        void userCannotDeleteAnotherUsersProblem() {
+
+                // Arrange
+                ProblemRepository problemRepository = mock(ProblemRepository.class);
+                ModelMapper modelMapper = mock(ModelMapper.class);
+                CurrentUserService currentUserService = mock(CurrentUserService.class);
+
+                ProblemService problemService = new ProblemService(
+                                problemRepository,
+                                modelMapper,
+                                currentUserService);
+
+                User currentUser = new User();
+                currentUser.setId(1L);
+
+                User problemOwner = new User();
+                problemOwner.setId(2L);
+
+                Problem problem = new Problem();
+                problem.setId(10L);
+                problem.setUser(problemOwner);
+
+                when(currentUserService.getCurrentUser()).thenReturn(currentUser);
+
+                when(problemRepository.findById(10L)).thenReturn(Optional.of(problem));
+
+                // Act + Assert
+                Assertions.assertThrows(RuntimeException.class, () -> problemService.deleteProblem(10L));
+
+                // Problem must NOT be deleted
+                verify(problemRepository, never()).delete(any(Problem.class));
         }
 
 }
