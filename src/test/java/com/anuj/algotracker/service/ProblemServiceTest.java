@@ -1,8 +1,13 @@
 package com.anuj.algotracker.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
 
 import com.anuj.algotracker.dto.ProblemRequest;
 import com.anuj.algotracker.dto.ProblemResponse;
@@ -11,9 +16,6 @@ import com.anuj.algotracker.model.Problem;
 import com.anuj.algotracker.model.ProblemStatus;
 import com.anuj.algotracker.model.User;
 import com.anuj.algotracker.repository.ProblemRepository;
-
-import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 
 class ProblemServiceTest {
 
@@ -244,6 +246,50 @@ class ProblemServiceTest {
 
                 verify(modelMapper, never())
                                 .map(any(Problem.class), eq(ProblemResponse.class));
+        }
+
+        @Test
+        void userCannotUpdateAnotherUsersProblem() {
+
+                // Arrange
+                ProblemRepository problemRepository = mock(ProblemRepository.class);
+                ModelMapper modelMapper = mock(ModelMapper.class);
+                CurrentUserService currentUserService = mock(CurrentUserService.class);
+
+                ProblemService problemService = new ProblemService(
+                                problemRepository,
+                                modelMapper,
+                                currentUserService);
+
+                User currentUser = new User();
+                currentUser.setId(1L);
+
+                User problemOwner = new User();
+                problemOwner.setId(2L);
+
+                Problem problem = new Problem();
+                problem.setId(10L);
+                problem.setTitle("Two Sum");
+                problem.setUser(problemOwner);
+
+                ProblemRequest request = new ProblemRequest();
+                request.setTitle("Hacked Title");
+                request.setDifficulty(Difficulty.HARD);
+                request.setTopic("Array");
+
+                when(currentUserService.getCurrentUser()).thenReturn(currentUser);
+
+                when(problemRepository.findById(10L))
+                                .thenReturn(Optional.of(problem));
+
+                // Act + Assert
+                RuntimeException exception = org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class,
+                                () -> problemService.updateProblem(10L, request));
+
+                assertEquals("Problem not found or access denied", exception.getMessage());
+
+                // Database update should never happen
+                verify(problemRepository, never()).save(any(Problem.class));
         }
 
 }
