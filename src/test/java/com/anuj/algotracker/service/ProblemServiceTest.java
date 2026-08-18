@@ -117,4 +117,64 @@ class ProblemServiceTest {
                                 .map(any(Problem.class), eq(ProblemResponse.class));
         }
 
+        @Test
+        void updateProblemSuccessfully() {
+
+                // Arrange
+                ProblemRepository problemRepository = mock(ProblemRepository.class);
+                ModelMapper modelMapper = mock(ModelMapper.class);
+                CurrentUserService currentUserService = mock(CurrentUserService.class);
+
+                ProblemService problemService = new ProblemService(
+                                problemRepository,
+                                modelMapper,
+                                currentUserService);
+
+                User user = new User();
+                user.setId(1L);
+                user.setEmail("anuj@gmail.com");
+
+                Problem problem = new Problem();
+                problem.setId(10L);
+                problem.setTitle("Old Title");
+                problem.setUser(user);
+
+                ProblemRequest request = new ProblemRequest();
+                request.setTitle("Updated Title");
+                request.setDescription("Updated description");
+                request.setDifficulty(Difficulty.MEDIUM);
+                request.setTopic("Array");
+                request.setLink("https://example.com");
+                request.setStatus(ProblemStatus.DONE);
+
+                ProblemResponse response = new ProblemResponse();
+                response.setTitle("Updated Title");
+
+                when(currentUserService.getCurrentUser())
+                                .thenReturn(user);
+
+                when(problemRepository.findById(10L))
+                                .thenReturn(java.util.Optional.of(problem));
+
+                when(problemRepository.save(problem))
+                                .thenReturn(problem);
+
+                when(modelMapper.map(problem, ProblemResponse.class))
+                                .thenReturn(response);
+
+                // Act
+                ProblemResponse result = problemService.updateProblem(10L, request);
+
+                // Assert
+                // Assert
+                assertEquals("Updated Title", result.getTitle());
+                assertEquals("Updated Title", problem.getTitle());
+                assertEquals(ProblemStatus.DONE, problem.getStatus());
+
+                verify(currentUserService).getCurrentUser();
+                verify(problemRepository).findById(10L);
+                verify(problemRepository).save(problem);
+                verify(modelMapper).map(problem, ProblemResponse.class);
+        }
+
 }
