@@ -4,6 +4,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import com.anuj.algotracker.dto.ProblemRequest;
+import com.anuj.algotracker.dto.ProblemResponse;
+import com.anuj.algotracker.model.Difficulty;
+import com.anuj.algotracker.model.ProblemStatus;
 import com.anuj.algotracker.security.CustomUserDetailsService;
 import com.anuj.algotracker.security.JWTService;
 import com.anuj.algotracker.security.SecurityConfig;
@@ -89,5 +92,37 @@ class ProblemControllerTest {
                 // Service should NOT be called
                 verify(problemService, never())
                                 .createProblem(any(ProblemRequest.class));
+        }
+
+        @Test
+        void createProblemSuccessfully() throws Exception {
+
+                // Arrange
+                ProblemRequest request = new ProblemRequest();
+
+                request.setTitle("Two Sum");
+                request.setDescription("Find two numbers");
+                request.setDifficulty(Difficulty.EASY);
+                request.setTopic("Array");
+                request.setLink("https://example.com");
+                request.setStatus(ProblemStatus.TODO);
+
+                ProblemResponse response = new ProblemResponse();
+                response.setTitle("Two Sum");
+
+                when(problemService.createProblem(any(ProblemRequest.class)))
+                                .thenReturn(response);
+
+                // Act + Assert
+                mockMvc.perform(
+                                post("/api/problems")
+                                                .with(user("anuj@gmail.com"))
+                                                .contentType(MediaType.APPLICATION_JSON)
+                                                .content(objectMapper.writeValueAsString(request)))
+                                .andExpect(status().isOk())
+                                .andExpect(jsonPath("$.title").value("Two Sum"));
+
+                // Service should be called once
+                verify(problemService).createProblem(any(ProblemRequest.class));
         }
 }
