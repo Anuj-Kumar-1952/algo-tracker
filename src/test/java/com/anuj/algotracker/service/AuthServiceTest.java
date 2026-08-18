@@ -14,6 +14,7 @@ import com.anuj.algotracker.security.JWTService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -122,5 +123,37 @@ class AuthServiceTest {
                 any(UsernamePasswordAuthenticationToken.class));
 
         verify(jwtService).generateToken("anuj@gmail.com");
+    }
+
+    @Test
+    void loginWithInvalidCredentials() {
+
+        // Arrange
+        UserRepository userRepository = mock(UserRepository.class);
+        BCryptPasswordEncoder passwordEncoder = mock(BCryptPasswordEncoder.class);
+        AuthenticationManager authenticationManager = mock(AuthenticationManager.class);
+        JWTService jwtService = mock(JWTService.class);
+
+        AuthService authService = new AuthService(
+                userRepository,
+                passwordEncoder,
+                authenticationManager,
+                jwtService);
+
+        LoginRequest request = new LoginRequest();
+        request.setEmail("anuj@gmail.com");
+        request.setPassword("wrongPassword");
+
+        when(authenticationManager.authenticate(
+                any(UsernamePasswordAuthenticationToken.class)))
+                .thenThrow(new BadCredentialsException("Invalid credentials"));
+
+        // Act + Assert
+        assertThrows(
+                BadCredentialsException.class,
+                () -> authService.login(request));
+
+        // JWT should not be generated
+        verify(jwtService, never()).generateToken(anyString());
     }
 }
