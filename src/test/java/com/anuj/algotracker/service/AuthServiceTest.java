@@ -1,8 +1,11 @@
 package com.anuj.algotracker.service;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
+import com.anuj.algotracker.dto.AuthResponse;
+import com.anuj.algotracker.dto.LoginRequest;
 import com.anuj.algotracker.dto.RegisterRequest;
 import com.anuj.algotracker.model.User;
 import com.anuj.algotracker.repository.UserRepository;
@@ -11,6 +14,7 @@ import com.anuj.algotracker.security.JWTService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 class AuthServiceTest {
@@ -84,5 +88,39 @@ class AuthServiceTest {
 
         // User should NOT be saved
         verify(userRepository, never()).save(any(User.class));
+    }
+
+    @Test
+    void loginSuccessfully() {
+
+        // Arrange
+        UserRepository userRepository = mock(UserRepository.class);
+        BCryptPasswordEncoder passwordEncoder = mock(BCryptPasswordEncoder.class);
+        AuthenticationManager authenticationManager = mock(AuthenticationManager.class);
+        JWTService jwtService = mock(JWTService.class);
+
+        AuthService authService = new AuthService(
+                userRepository,
+                passwordEncoder,
+                authenticationManager,
+                jwtService);
+
+        LoginRequest request = new LoginRequest();
+        request.setEmail("anuj@gmail.com");
+        request.setPassword("123456");
+
+        when(jwtService.generateToken("anuj@gmail.com"))
+                .thenReturn("test-jwt-token");
+
+        // Act
+        AuthResponse response = authService.login(request);
+
+        // Assert
+        assertEquals("test-jwt-token", response.getToken());
+
+        verify(authenticationManager).authenticate(
+                any(UsernamePasswordAuthenticationToken.class));
+
+        verify(jwtService).generateToken("anuj@gmail.com");
     }
 }
