@@ -2,6 +2,7 @@ package com.anuj.algotracker.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -38,5 +39,19 @@ public class GlobalExceptionHandler {
         response.put("message", ex.getMessage());
 
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, String>> handleHttpMessageNotReadable(
+            HttpMessageNotReadableException ex) {
+
+        Map<String, String> response = new HashMap<>();
+
+        response.put("error", "Invalid JSON");
+        response.put("message", "Invalid value provided in request");
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(response);
     }
 }

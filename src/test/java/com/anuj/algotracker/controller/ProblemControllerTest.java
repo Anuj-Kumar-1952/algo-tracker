@@ -125,4 +125,27 @@ class ProblemControllerTest {
                 // Service should be called once
                 verify(problemService).createProblem(any(ProblemRequest.class));
         }
+
+        @Test
+        void createProblemWithInvalidJson() throws Exception {
+
+                String invalidJson = """
+                                {
+                                    "title": "Two Sum",
+                                    "difficulty": "INVALID_VALUE",
+                                    "topic": "Array",
+                                    "status": "TODO"
+                                }
+                                """;
+
+                mockMvc.perform(
+                                post("/api/problems")
+                                                .with(user("anuj@gmail.com"))
+                                                .contentType(MediaType.APPLICATION_JSON)
+                                                .content(invalidJson))
+                                .andExpect(status().isBadRequest());
+
+                verify(problemService, never())
+                                .createProblem(any(ProblemRequest.class));
+        }
 }
