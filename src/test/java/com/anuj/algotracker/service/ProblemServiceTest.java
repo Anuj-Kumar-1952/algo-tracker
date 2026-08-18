@@ -211,6 +211,39 @@ class ProblemServiceTest {
                 // Assert
                 verify(problemRepository).delete(problem);
         }
-        
+
+        @Test
+        void getProblemWhenProblemDoesNotExist() {
+
+                // Arrange
+                ProblemRepository problemRepository = mock(ProblemRepository.class);
+                ModelMapper modelMapper = mock(ModelMapper.class);
+                CurrentUserService currentUserService = mock(CurrentUserService.class);
+
+                ProblemService problemService = new ProblemService(
+                                problemRepository,
+                                modelMapper,
+                                currentUserService);
+
+                User user = new User();
+                user.setId(1L);
+                user.setEmail("anuj@gmail.com");
+
+                when(currentUserService.getCurrentUser())
+                                .thenReturn(user);
+
+                when(problemRepository.findById(99L))
+                                .thenReturn(java.util.Optional.empty());
+
+                // Act + Assert
+                RuntimeException exception = org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class,
+                                () -> problemService.getProblemById(99L));
+
+                assertEquals("Problem not found or access denied",
+                                exception.getMessage());
+
+                verify(modelMapper, never())
+                                .map(any(Problem.class), eq(ProblemResponse.class));
+        }
 
 }
